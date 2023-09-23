@@ -2,7 +2,7 @@ const Contact = require('../models/contact');
 
 const getAllContacts = async (request, response) => {
   try {
-    const contacts = await Contact.find({ user: request.user._id });
+    const contacts = await Contact.find();
     response.json({ contacts });
   } catch (error) {
     console.log(error.message);
@@ -12,17 +12,14 @@ const getAllContacts = async (request, response) => {
 
 const createContact = async (request, response) => {
   try {
-    const contactName = request.body.contactName;
-    const contactEmail = request.body.contactEmail;
-    const contactNumber = request.body.contactNumber;
-    const contactGroup = request.body.contactGroup;
+    const { contactName, contactEmail, contactNumber, contactGroup } =
+      request.body;
 
     const contact = await Contact.create({
       contactName,
       contactEmail,
       contactNumber,
       contactGroup,
-      user: request.user._id,
     });
     response.json({ contact });
   } catch (error) {
@@ -34,13 +31,11 @@ const createContact = async (request, response) => {
 const editContact = async (request, response) => {
   try {
     const contactId = request.params.id;
-    const contactName = request.body.contactName;
-    const contactEmail = request.body.contactEmail;
-    const contactNumber = request.body.contactNumber;
-    const contactGroup = request.body.contactGroup;
+    const { contactName, contactEmail, contactNumber, contactGroup } =
+      request.body;
 
-    await Contact.findOneAndUpdate(
-      { _id: contactId, user: request.user._id },
+    await Contact.findByIdAndUpdate(
+      { _id: contactId },
       {
         contactName,
         contactEmail,
@@ -61,7 +56,7 @@ const editContact = async (request, response) => {
 const deleteContact = async (request, response) => {
   try {
     const contactId = request.params.id;
-    await Contact.deleteOne({ _id: contactId, user: request.user._id });
+    await Contact.deleteOne({ _id: contactId });
     response.send('Deleted!');
   } catch (error) {
     console.log(error.message);

@@ -1,10 +1,15 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const mongoose = require('mongoose');
-const contactSchema = require('./models/contact');
+const contactController = require('./controller/contactController');
+
+//help express read json files
+app.use(express.json());
+app.use(cors());
+
 const URI =
   'mongodb+srv://naaghart:naaghart@basic.lmmcjdd.mongodb.net/?retryWrites=true&w=majority';
-
 mongoose
   .connect(URI)
   .then(() => {
@@ -14,8 +19,10 @@ mongoose
     console.log('Connect to DB:', error.message);
   });
 
-//help express read json files
-app.use(express.json());
+app.get('/contacts', contactController.getAllContacts);
+app.post('/contacts', contactController.createContact);
+app.put('/contacts/:id', contactController.editContact);
+app.delete('/contacts/:id', contactController.deleteContact);
 
 app.get('/', (req, res) => {
   res.json({ message: 'hello' });
