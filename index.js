@@ -25,7 +25,7 @@ app.put('/contacts/:id', contactController.editContact);
 app.delete('/contacts/:id', contactController.deleteContact);
 
 app.get('/', (req, res) => {
-  res.json({ message: 'hello' });
+  res.send( 'hello' );
 });
 
 PORT = 5000;
