@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
   res.json({ message: 'hello' });
 });
 
-PORT = 1759;
+PORT = 5000;
 
 app.listen(PORT, '127.0.0.1', function () {
   console.log('server is listening on ' + PORT);
