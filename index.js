@@ -101,6 +101,6 @@ app.get('/', (req, res) => {
 
 PORT = 5000;
 
-app.listen(PORT, '127.0.0.1', function () {
+app.listen(PORT, function () {
   console.log('server is listening on ' + PORT);
 });
