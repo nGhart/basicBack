@@ -19,7 +19,18 @@ const vaccinationController = require('./controller/vaccinationController');
 const profileController = require('./controller/profileController');
 
 app.use(express.json());
-app.use(cors());
+//app.use(cors());
+
+app.use(
+  cors({
+    origin: [
+      '*',
+      
+      'https://recordsfrontend.vercel.app',
+    ],
+    credentials: true,
+  })
+);
 
 dotenv.config();
 
