@@ -25,8 +25,7 @@ app.use(
   cors({
     origin: [
       '*',
-      
-      'https://recordsfrontend.vercel.app',
+      'https://basic-front.vercel.app',
     ],
     credentials: true,
   })
