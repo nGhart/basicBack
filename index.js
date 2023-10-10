@@ -13,11 +13,23 @@ const vaccinationController = require('./controller/vaccinationController');
 const profileController = require('./controller/profileController');
 
 app.use(express.json());
-app.use(cors());
+//app.use(cors());
+
+app.use(
+  cors({
+    origin: ['*', 'https://basic-front.vercel.app'],
+    credentials: true,
+  })
+);
 
 dotenv.config();
 
 connectToDb();
+
+app.get('/contacts', contactController.getAllContacts);
+app.post('/contacts', contactController.createContact);
+app.put('/contacts/:id', contactController.editContact);
+app.delete('/contacts/:id', contactController.deleteContact);
 
 app.get('/animals', animalController.getAllAnimals);
 app.post('/animals', animalController.createAnimal);
