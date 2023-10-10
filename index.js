@@ -26,11 +26,6 @@ dotenv.config();
 
 connectToDb();
 
-app.get('/contacts', contactController.getAllContacts);
-app.post('/contacts', contactController.createContact);
-app.put('/contacts/:id', contactController.editContact);
-app.delete('/contacts/:id', contactController.deleteContact);
-
 app.get('/animals', animalController.getAllAnimals);
 app.post('/animals', animalController.createAnimal);
 app.put('/animals/:id', animalController.editAnimal);
