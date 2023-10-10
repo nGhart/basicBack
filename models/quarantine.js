@@ -12,6 +12,7 @@ const quarantineSchema = new mongoose.Schema({
   outcome: {
     type: String,
     required: true,
+    default: 'Quarantined',
   },
   startDate: {
     type: String,
