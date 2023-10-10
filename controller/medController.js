@@ -16,12 +16,14 @@ const createMed = async (request, response) => {
     const expiryDate = request.body.expiryDate;
     const number = request.body.number;
     const supplier = request.body.supplier;
+    const status = request.body.status;
 
     const med = await Med.create({
       name,
       expiryDate,
       number,
       supplier,
+      status,
     });
     response.json({ med });
   } catch (error) {
@@ -37,6 +39,7 @@ const editMed = async (request, response) => {
     const expiryDate = request.body.expiryDate;
     const number = request.body.number;
     const supplier = request.body.supplier;
+    const status = request.body.status;
 
     await Med.findOneAndUpdate(
       { _id: medId },
@@ -45,11 +48,10 @@ const editMed = async (request, response) => {
         expiryDate,
         number,
         supplier,
+        status,
       }
     );
-    //find updated
     const med = await Med.findById(medId);
-    //return updated
     response.json({ med });
   } catch (error) {
     console.log(error.message);
