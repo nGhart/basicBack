@@ -1,6 +1,5 @@
 const Animal = require('../models/animal');
 
-//get animals by user ID
 const getAllAnimals = async (request, response) => {
   try {
     const animals = await Animal.find();
@@ -18,17 +17,15 @@ const createAnimal = async (request, response) => {
     const dob = request.body.dob;
     const bred = request.body.bred;
     const breed = request.body.breed;
+    const description = request.body.description;
+    const pic = request.body.pic;
     const dame = request.body.dame;
     const sire = request.body.sire;
+    const status = request.body.status;
     const grandDame = request.body.grandDame;
     const grandSire = request.body.grandSire;
-    const weaning = request.body.weaning;
-    const weightBirth = request.body.weightBirth;
-    const weightWean = request.body.weightWean;
-    const weight8 = request.body.weight8;
     const weightCurrent = request.body.weightCurrent;
     const weightSale = request.body.weightSale;
-    const firstService = request.body.firstService;
     const totalService = request.body.totalService;
     const totalLitters = request.body.totalLitters;
     const totalKits = request.body.totalKits;
@@ -43,17 +40,13 @@ const createAnimal = async (request, response) => {
       dob,
       bred,
       breed,
+      description,
       dame,
       sire,
       grandDame,
       grandSire,
-      weaning,
-      weightBirth,
-      weightWean,
-      weight8,
       weightCurrent,
       weightSale,
-      firstService,
       totalService,
       totalLitters,
       totalKits,
@@ -61,6 +54,8 @@ const createAnimal = async (request, response) => {
       deadKits,
       soldKits,
       butcheredKits,
+      pic,
+      status,
     });
     response.json({ animal });
   } catch (error) {
@@ -79,17 +74,15 @@ const editAnimal = async (request, response) => {
     const dob = request.body.dob;
     const bred = request.body.bred;
     const breed = request.body.breed;
+    const description = request.body.description;
+    const pic = request.body.pic;
     const dame = request.body.dame;
     const sire = request.body.sire;
+    const status = request.body.status;
     const grandDame = request.body.grandDame;
     const grandSire = request.body.grandSire;
-    const weaning = request.body.weaning;
-    const weightBirth = request.body.weightBirth;
-    const weightWean = request.body.weightWean;
-    const weight8 = request.body.weight8;
     const weightCurrent = request.body.weightCurrent;
     const weightSale = request.body.weightSale;
-    const firstService = request.body.firstService;
     const totalService = request.body.totalService;
     const totalLitters = request.body.totalLitters;
     const totalKits = request.body.totalKits;
@@ -106,24 +99,22 @@ const editAnimal = async (request, response) => {
         dob,
         bred,
         breed,
+        description,
         dame,
         sire,
         grandDame,
         grandSire,
-        weaning,
-        weightBirth,
-        weightWean,
-        weight8,
         weightCurrent,
         weightSale,
-        firstService,
         totalService,
         totalLitters,
         totalKits,
         aliveKits,
         deadKits,
         soldKits,
+        status,
         butcheredKits,
+        pic,
       }
     );
     //find updated

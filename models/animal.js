@@ -6,17 +6,13 @@ const animalSchema = new mongoose.Schema({
   dob: { type: Date, required: true },
   bred: { type: String, required: false },
   breed: { type: String, required: false },
-  dame: { type: String, required: true },
-  sire: { type: String, required: true },
+  description: { type: String, required: false },
+  dame: { type: String, required: false },
+  sire: { type: String, required: false },
   grandDame: { type: String, required: false },
   grandSire: { type: String, required: false },
-  weaning: { type: Number, required: false },
-  weightBirth: { type: Number, required: false },
-  weightWean: { type: Number, required: false },
-  weight8: { type: Number, required: false },
   weightCurrent: { type: Number, required: false },
   weightSale: { type: Number, required: false },
-  firstService: { type: Number, required: false },
   totalService: { type: Number, required: false },
   totalLitters: { type: Number, required: false },
   totalKits: { type: Number, required: false },
@@ -24,7 +20,13 @@ const animalSchema = new mongoose.Schema({
   deadKits: { type: Number, required: false },
   soldKits: { type: Number, required: false },
   butcheredKits: { type: Number, required: false },
-  pic: { type: String, required: false, default: 'Image of animal' },
+  status: { type: String, required: false, default: 'Available' },
+  pic: {
+    type: String,
+    required: false,
+    default:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIQjJpajje8mPzBmZL1Ye0V4zYyCtHC2p0gw&usqp=CAU',
+  },
 });
 
 const Animal = mongoose.model('Animal', animalSchema);

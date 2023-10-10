@@ -21,6 +21,7 @@ const diseaseSchema = new mongoose.Schema({
   diseaseOutcome: {
     type: String,
     required: false,
+    default: 'In treatment',
   },
   diseaseDate: {
     type: String,

@@ -18,6 +18,7 @@ const createMating = async (request, response) => {
     const matingDate2 = request.body.matingDate2;
     const nesting = request.body.nesting;
     const kindling = request.body.kindling;
+    const status = request.body.status;
 
     const mating = await Mating.create({
       matingDoe,
@@ -25,6 +26,7 @@ const createMating = async (request, response) => {
       matingDate1,
       matingDate2,
       nesting,
+      status,
       kindling,
     });
     response.json({ mating });
@@ -43,6 +45,7 @@ const editMating = async (request, response) => {
     const matingDate2 = request.body.matingDate2;
     const nesting = request.body.nesting;
     const kindling = request.body.kindling;
+    const status = request.body.status;
 
     await Mating.findOneAndUpdate(
       { _id: matingId },
@@ -53,6 +56,7 @@ const editMating = async (request, response) => {
         matingDate2,
         nesting,
         kindling,
+        status,
       }
     );
     // Find updated

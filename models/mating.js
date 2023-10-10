@@ -25,6 +25,7 @@ const matingSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  status: { type: String, required: false, default: 'Pending' },
 });
 
 const Mating = mongoose.model('Mating', matingSchema);

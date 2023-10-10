@@ -16,12 +16,14 @@ const createFeed = async (request, response) => {
     const feedQuantity = request.body.feedQuantity;
     const feedDatePurchased = request.body.feedDatePurchased;
     const feedServing = request.body.feedServing;
+    const status = request.body.status;
 
     const feed = await Feed.create({
       feedName,
       feedQuantity,
       feedDatePurchased,
       feedServing,
+      status,
     });
     response.json({ feed });
   } catch (error) {
@@ -38,6 +40,7 @@ const editFeed = async (request, response) => {
     const feedQuantity = request.body.feedQuantity;
     const feedDatePurchased = request.body.feedDatePurchased;
     const feedServing = request.body.feedServing;
+    const status = request.body.status;
 
     await Feed.findOneAndUpdate(
       { _id: feedId },
@@ -46,6 +49,7 @@ const editFeed = async (request, response) => {
         feedQuantity,
         feedDatePurchased,
         feedServing,
+        status,
       }
     );
     const feed = await Feed.findById(feedId);
