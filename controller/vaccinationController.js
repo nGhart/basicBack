@@ -15,11 +15,13 @@ const createVaccination = async (request, response) => {
     const medication = request.body.medication;
     const date = request.body.date;
     const nextDate = request.body.nextDate;
+    const status = request.body.status;
 
     const vaccination = await Vaccination.create({
       medication,
       date,
       nextDate,
+      status,
     });
     response.json({ vaccination });
   } catch (error) {
@@ -34,12 +36,14 @@ const editVaccination = async (request, response) => {
     const medication = request.body.medication;
     const nextDate = request.body.nextDate;
     const date = request.body.date;
+    const status = request.body.status;
     await Vaccination.findOneAndUpdate(
       { _id: vaccinationId },
       {
         medication,
         date,
         nextDate,
+        status,
       }
     );
 
