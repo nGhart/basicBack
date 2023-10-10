@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-//const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const connectToDb = require('./config/connectToDb');
 const animalController = require('./controller/animalController');

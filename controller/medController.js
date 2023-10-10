@@ -51,9 +51,7 @@ const editMed = async (request, response) => {
         status,
       }
     );
-    //find updated
     const med = await Med.findById(medId);
-    //return updated
     response.json({ med });
   } catch (error) {
     console.log(error.message);

@@ -59,9 +59,7 @@ const editMating = async (request, response) => {
         status,
       }
     );
-    // Find updated
     const mating = await Mating.findById(matingId);
-    // Return updated
     response.json({ mating });
   } catch (error) {
     console.log(error.message);
