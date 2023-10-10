@@ -13,6 +13,7 @@ const vaccinationSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  status: { type: String, required: false, default: 'Pending' },
 });
 
 const Vaccination = mongoose.model('Vaccination', vaccinationSchema);
